@@ -1,0 +1,124 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("1+ Health Every Seccond Itzerickx0", "Sentinel")
+
+-- Tabs
+local MainTab = Window:NewTab("Main")
+local TeleportTab = Window:NewTab("Teleport")
+
+-- Sections
+local MainSection = MainTab:NewSection("Player Settings")
+local TeleportSection = TeleportTab:NewSection("Teleport")
+local Teleport1Section = TeleportTab:NewSection("Teleport Auto Farm")
+
+-- Main
+MainSection:NewSlider("WalkSpeed", "Set Your WalkSpeed", 1000, 0, function(s) -- 1000 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+MainSection:NewSlider("JumpPower", "Set Your JumpPower", 1000, 0, function(s) -- 1000 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+MainSection:NewButton("Reset WalkSpeed & JumpPower", "Resets JumpPower And WalkSpeed To Normal", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+end)
+
+MainSection:NewToggle("SuperHero", "Gives SuperHero Powers", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 80
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 200
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    end
+end)
+
+-- Teleport
+TeleportSection:NewButton("+100 Health", "Teleport's and gives +100 Health", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45, -63.5, 4243, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+TeleportSection:NewButton("+25 Health", "Teleport's and gives +25 Health", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-106, 67.5, -21, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+TeleportSection:NewButton("+10 Health", "Teleport's and gives +10 Health", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-115, 14.5, 76, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+TeleportSection:NewButton("+5 Health", "Teleport's and gives +5 Health", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-39.5, 42.5, 38.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
+
+TeleportSection:NewTextBox("Goto", "Go to a player.", function(PlayerTeleportName)
+    local playerone = game.Players.LocalPlayer.Character
+    local playertwo = game.Workspace:FindFirstChild(PlayerTeleportName)
+    playerone.HumanoidRootPart.CFrame = playertwo.HumanoidRootPart.CFrame * CFrame.new(0,2,0)
+end)
+
+
+-- AutoFarm Teleport
+Teleport1Section:NewToggle("AutoFarm Toggle +100 Health", "Automatic Farms Healths", function(state)
+    if state then
+        _G.Health100 = true
+        while _G.Health100 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45, -63.5, 4243, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    else
+        _G.Health100 = false
+        while _G.Health100 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45, -63.5, 4243, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    end
+end)
+
+Teleport1Section:NewToggle("AutoFarm Toggle +25 Health", "Automatic Farms Healths", function(state)
+    if state then
+        _G.Health25 = true
+        while _G.Health25 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-106, 67.5, -21, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    else
+        _G.Health25 = false
+        while _G.Health25 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-106, 67.5, -21, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    end
+end)
+
+Teleport1Section:NewToggle("AutoFarm Toggle +10 Health", "Automatic Farms Healths", function(state)
+    if state then
+        _G.Health10 = true
+        while _G.Health10 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-115, 14.5, 76, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    else
+        _G.Health10 = false
+        while _G.Health10 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-115, 14.5, 76, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    end
+end)
+
+Teleport1Section:NewToggle("AutoFarm Toggle +5 Health", "Automatic Farms Healths", function(state)
+    if state then
+        _G.Health5 = true
+        while _G.Health5 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-39.5, 42.5, 38.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    else
+        _G.Health5 = false
+        while _G.Health5 == true do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-39.5, 42.5, 38.5, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+            wait(2.5)
+        end
+    end
+end)
